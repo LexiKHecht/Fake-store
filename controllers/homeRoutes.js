@@ -5,14 +5,15 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     // Pass serialized data and session flag into template
-    res.render('homepage', {  
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      logged_in: req.session.logged_in,
     });
+
+    res.redirect('/profile');
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -26,7 +27,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
