@@ -24,6 +24,14 @@ Cart.hasMany(Product, {
     foreignKey: 'cart_id',
 });
 
+// Product belongs to Category
+Product.belongsTo(Category, {
+    foreignKey: 'category_id',
+});
+// Category has many Product
+Category.hasMany(Product, {
+    foreignKey: 'category_id',
+});
 
 
 module.exports = {
