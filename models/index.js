@@ -2,6 +2,7 @@
 const User = require('./User');
 const Product = require('./Product');
 const Cart = require('./Cart');
+const Category = require('./Category');
 
 
 // Table Relationships
@@ -38,4 +39,5 @@ module.exports = {
     User,
     Product,
     Cart,
+    Category,
 };
