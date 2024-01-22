@@ -41,7 +41,6 @@ html {
     /* Opera*/
     -moz-transform: rotateX(0deg);
     color: red;
-    z-index: -99999;
     position: relative;
     visibility: visible;
 }
@@ -58,7 +57,6 @@ html {
     -moz-transform-origin: 0% 0%;
     -ms-transform: rotateX(180deg);
     -ms-transform-origin: 0% 0%;
-    z-index: -99999;
     position: relative;
     transition-timing-function: cubic-bezier(0, 0.35, .5, 1.8);
     -webkit-transition-timing-function: cubic-bezier(0, 0.35, .5, 1.8);
