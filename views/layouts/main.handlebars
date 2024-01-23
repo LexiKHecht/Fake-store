@@ -70,12 +70,16 @@
               class='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
             >
               <li>
-                <a class='justify-between'>
+                <a id='profile-route' class='justify-between' type='click'>
                   Profile
                   <span class='badge'>New</span>
                 </a>
               </li>
-              <li><a>Settings</a></li>
+              <li><a
+                  id='settings-route'
+                  class='justify-between'
+                  type='click'
+                >Settings</a></li>
               <li><a id='logout' type='click'>
                   Logout</a></li>
             </ul>
@@ -105,10 +109,12 @@
             <li class='text-ghostWhite'><a class='justify-center'>Page 3</a></li>
             <li class='text-ghostWhite'><a class='justify-center'>Page 4</a></li>
           </ul>
-
         </div>
       </div>
     </section>
     <script src='./js/logout.js'></script>
+    <script src='./js/profile.js'></script>
+    <script src='./js/settings.js'></script>
+
   </body>
 </html>

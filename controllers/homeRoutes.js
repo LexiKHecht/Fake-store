@@ -55,4 +55,16 @@ router.get('/signup', (req, res) => {
   }
 });
 
+router.get('/settings', (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      res.redirect('/profile');
+      return;
+    }
+    res.render('settings');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
