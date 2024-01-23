@@ -3,10 +3,16 @@ const { Product } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    const productData = await Product.findAll({
+    const dbProductData = await Product.findAll({
       include: [{ model: Category }],
     });
-    res.status(200).json(productData);
+    const products = dbProductData.map((product) =>
+      product.get({ plain: true })
+    );
+
+    res.render('products', {
+      products,
+    });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
@@ -15,14 +21,15 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const productData = await Product.findByPk(req.params.id, {
+    const dbProductData = await Product.findByPk(req.params.id, {
       include: [{ model: Category }],
     });
-    if (!productData) {
+    if (!dbProductData) {
       res.status(404).json({ message: 'Product not found!' });
       return;
     }
-    res.status(200).json(productData);
+    const product = dbProductData.get({ plain: true });
+    res.render('product', { product });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
