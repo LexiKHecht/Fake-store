@@ -11,7 +11,7 @@ module.exports = {
       teal: '#44848F',
       green: '#A4E034',
       lavender: '#BCA4DB',
-      paleGreen: '#EBFFF3',
+      paleGreen: '#c8fadc',
       ghostWhite: '#E6E7EF',
     },
   },
