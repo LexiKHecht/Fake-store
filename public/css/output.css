@@ -2830,25 +2830,11 @@ details.collapse summary::-webkit-details-marker {
   border-width: 1px;
 }
 
-.border-2 {
-  border-width: 2px;
-}
 
-.border-t {
-  border-top-width: 1px;
-}
-
-.border-solid {
-  border-style: solid;
-}
-
-.border-none {
-  border-style: none;
-}
-
-.border-base-300 {
+.border-teal {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
+  border-color: rgb(68 132 143 / var(--tw-border-opacity));
+
 }
 
 .bg-base-100 {
@@ -2874,6 +2860,11 @@ details.collapse summary::-webkit-details-marker {
 .bg-base-200 {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+}
+
+.bg-teal {
+  --tw-bg-opacity: 1;
+  background-color: rgb(68 132 143 / var(--tw-bg-opacity));
 }
 
 .stroke-current {
@@ -3096,6 +3087,12 @@ details.collapse summary::-webkit-details-marker {
     cursor: default;
     background-color: transparent;
   }
+}
+
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .focus\:outline-none:focus {
