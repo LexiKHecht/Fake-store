@@ -9,22 +9,22 @@ const productData = require('./productData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userData, {
+  await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
 
-  const carts = await Cart.bulkCreate(cartData, {
+  // const carts = await Cart.bulkCreate(cartData, {
+  //   returning: true,
+  // });
+
+  // const categories = await Category.bulkCreate(categoryData, {
+  //   returning: true,
+  // });
+
+  await Product.bulkCreate(productData, {
     returning: true,
   });
-
-  const categories = await Category.bulkCreate(categoryData, {
-    returning: true,
-  }); 
-
-  const products = await Product.bulkCreate(productData, {
-    returning: true,
-  }); 
 
   process.exit(0);
 };

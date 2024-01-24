@@ -29,7 +29,10 @@
           <h3
             class='text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2'
           >
-            Hi, {{name}}
+          
+          {{#if logged_in}}
+            Hi, {{user.name}}          
+            {{/if}}
           </h3>
           <div
             class='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'
@@ -55,10 +58,8 @@
           <div class='flex flex-wrap justify-center'>
             <div class='w-full lg:w-9/12 px-4'>
               <p class='mb-4 text-lg leading-relaxed text-blueGray-700 h-10 w-60'>
-          
+                {{!-- removed logout because nav already has a logout --}}
               </p>
-              <a href='javascript:void(0);' class='font-normal text-pink-500'>
-                Logout
               </a>
             </div>
           </div>
@@ -91,3 +92,4 @@
     </div>
   </footer> --}}
 </section>
+

@@ -20,6 +20,23 @@ const signupFormHandler = async (event) => {
   }
 };
 
+const loginRouteHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/login', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.ok) {
+    document.location.replace('/login');
+  } else {
+    alert(response.statusText);
+  }
+};
+
 document
-  .querySelector('#signup-form')
+  .querySelector('.new-user-form')
   .addEventListener('click', signupFormHandler);
+
+document
+  .querySelector('#login-route')
+  .addEventListener('click', loginRouteHandler);

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Product } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -8,35 +8,67 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       logged_in: req.session.logged_in,
     });
-
-    res.redirect('/profile');
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Use withAuth middleware to prevent access to route
-router.get('/profile', async (req, res) => {
-
-
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+    });
+    const user = userData.get({
+      plain: true,
+    });
+    console.log(user);
 
     res.render('profile', {
-      ...user,
+      user: user,
+      name: 'help me',
       logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
   }
+});
 
+router.get('/', async (req, res) => {
+  try {
+    const dbProductData = await Product.findAll({
+      include: [
+        {
+          model: Painting,
+          attributes: ['filename', 'description'],
+        },
+      ],
+    });
+
+    const product = dbProductData.map((product) =>
+      product.get({ plain: true })
+    );
+
+    res.render('homepage', {
+      logged_in: req.session.logged_in,
+      product,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
+  try {
+    // If the user is already logged in, redirect the request to another route
+    if (req.session.logged_in) {
+      res.redirect('/profile');
+      return;
+    }
+    res.render('login');
+  } catch (err) {
+    res.status(500).json(err);
   }
-  res.render('login');
 });
 
 router.get('/signup', (req, res) => {
@@ -46,18 +78,6 @@ router.get('/signup', (req, res) => {
       return;
     }
     res.render('signup');
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/settings', (req, res) => {
-  try {
-    if (req.session.logged_in) {
-      res.redirect('/profile');
-      return;
-    }
-    res.render('settings');
   } catch (err) {
     res.status(500).json(err);
   }
