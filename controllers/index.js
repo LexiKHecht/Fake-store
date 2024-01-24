@@ -6,6 +6,6 @@ const storeRoutes = require('./storeRoutes');
 
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
-router.use('/', storeRoutes);
+router.use('/store', storeRoutes);
 
 module.exports = router;

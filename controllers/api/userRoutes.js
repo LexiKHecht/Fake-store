@@ -43,17 +43,19 @@ router.post('/login', async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(400).json(res);
   }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+router.get('/logout', (req, res) => {
+  try {
     req.session.destroy(() => {
+      res.redirect('/');
       res.status(204).end();
     });
-  } else {
-    res.status(404).end();
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
