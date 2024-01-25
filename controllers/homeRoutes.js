@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { User, Product } = require('../models');
+const { User } = require('../models');
 const withAuth = require('../utils/auth');
+const apiUrl = process.env.API_URL || 'https://fakestoreapi.com/products';
 
 // router.get('/', async (req, res) => {
 //   try {
@@ -35,15 +36,21 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const dbProductData = await Product.findAll({});
-
-    const product = dbProductData.map((product) =>
-      product.get({ plain: true })
-    );
-
-    res.render('homepage', {
-      logged_in: req.session.logged_in,
-      product,
+    let products = [];
+    fetch(apiUrl).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          // console.log(data);
+          products = data;
+          // console.log('products', products);
+          res.render('homepage', {
+            logged_in: req.session.logged_in,
+            products,
+          });
+        });
+      } else {
+        console.log('Error: ' + response.statusText);
+      }
     });
   } catch (err) {
     console.log(err);
