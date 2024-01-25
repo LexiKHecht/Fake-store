@@ -17,6 +17,8 @@ router.get('/products', async (req, res) => {
         alert('Error: ' + response.statusText);
       }
     });
+    // console.log(products);
+
     res.render('products', {
       ...products,
     });
@@ -71,7 +73,9 @@ router.get('products/categories', async (req, res) => {
 router.get('/products/category/:category_name', async (req, res) => {
   try {
     let products = [];
-    fetch(apiUrl + '/category/' + req.params.category_name).then(function (response) {
+    fetch(apiUrl + '/category/' + req.params.category_name).then(function (
+      response
+    ) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
