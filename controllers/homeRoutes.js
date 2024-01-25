@@ -3,17 +3,6 @@ const { User } = require('../models');
 const withAuth = require('../utils/auth');
 const apiUrl = process.env.API_URL || 'https://fakestoreapi.com/products';
 
-// router.get('/', async (req, res) => {
-//   try {
-//     // Pass serialized data and session flag into template
-//     res.render('homepage', {
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -40,9 +29,7 @@ router.get('/', async (req, res) => {
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          // console.log(data);
           products = data;
-          // console.log('products', products);
           res.render('homepage', {
             logged_in: req.session.logged_in,
             products,
@@ -80,6 +67,27 @@ router.get('/signup', (req, res) => {
     res.render('signup');
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.get('/product/:id', async (req, res) => {
+  try {
+    fetch(apiUrl).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          const singleProduct = data.find((item) => item.id == req.params.id);
+          console.log(singleProduct);
+          res.render('product', {
+            singleProduct,
+          });
+        });
+      } else {
+        res.status(404).json({ message: 'Product not found!' });
+      }
+    });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
   }
 });
 
