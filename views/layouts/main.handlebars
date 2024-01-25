@@ -11,13 +11,13 @@
   <body>
     <!-- nav -->
     <nav>
-      <div class='navbar bg-ghostWhite'>
+      <div class='navbar bg-ghostWhite dark:bg-darkGray'>
         <div class='flex-1'>
           <label
             for='my-drawer-2'
             class='drawer-button font-semibold pl-4 text-3xl'
           >
-            <a href='/' type='click'>Fake Store</a>
+            <a href='/' type='click' class="dark:text-ghostWhite">Fake Store</a>
           </label>
         </div>
 
@@ -46,22 +46,22 @@
             >
               {{#if logged_in}}
                 <li>
-                  <a href='/profile' class='justify-between' type='click'>
+                  <a href='/profile' class='justify-between dark:text-ghostWhite' type='click'>
                     Profile
                   </a>
                 </li>
                 <li>
                   <a
                     href='/api/users/logout'
-                    class='justify-between'
+                    class='justify-between dark:text-ghostWhite'
                     type='click'
                   >Logout</a>
                 </li>
               {{else}}
                 <li>
-                  <a href='/profile' class='justify-between' type='click'>
+                  <a href='/profile' class='justify-between dark:text-ghostWhite' type='click'>
                     Profile
-                    <span class='badge'>New</span>
+                    <span class='badge dark:text-ghostWhite'>New</span>
                   </a>
                 </li>
               {{/if}}
@@ -74,7 +74,7 @@
     <section>
       <div class='drawer lg:drawer-open'>
         <input id='my-drawer-2' type='checkbox' class='drawer-toggle' />
-        <div class='drawer-content flex flex-col items-center justify-center'>
+        <div class='drawer-content flex flex-col items-center justify-center dark:bg-offBlack'>
 
           {{{body}}}
 
@@ -85,12 +85,12 @@
             aria-label='close sidebar'
             class='drawer-overlay'
           ></label>
-          <ul class='menu p-4 w-60 min-h-full text-base-content bg-darkblue'>
+          <ul class='menu p-4 w-60 min-h-full text-base-content bg-darkblue dark:bg-navyBlue'>
             <!-- Sidebar content here -->
-            <li class='text-ghostWhite'><a class='justify-center'>Page 1</a></li>
-            <li class='text-ghostWhite'><a class='justify-center'>Page 2</a></li>
-            <li class='text-ghostWhite'><a class='justify-center'>Page 3</a></li>
-            <li class='text-ghostWhite'><a class='justify-center'>Page 4</a></li>
+            <li class='text-ghostWhite'><a class='justify-center dark:text-ghostWhite'>Page 1</a></li>
+            <li class='text-ghostWhite'><a class='justify-center dark:text-ghostWhite'>Page 2</a></li>
+            <li class='text-ghostWhite'><a class='justify-center dark:text-ghostWhite'>Page 3</a></li>
+            <li class='text-ghostWhite'><a class='justify-center dark:text-ghostWhite'>Page 4</a></li>
           </ul>
         </div>
       </div>

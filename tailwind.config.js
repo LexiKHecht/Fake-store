@@ -13,6 +13,12 @@ module.exports = {
       lavender: '#BCA4DB',
       paleGreen: '#c8fadc',
       ghostWhite: '#E6E7EF',
+      // Dark mode colors
+      darkGray: '#202225',
+      navyBlue: '#222730',
+      offBlack: '#100f14',
+      slateGray: '#222730',
+      lightpink: '#f0776c',
     },
   },
   plugins: [require('daisyui')],
