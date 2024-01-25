@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './views/layouts/*.{handlebars,html,js}',
     './views/*.{handlebars,html,js}',
+    './views/partials/*.{handlebars,html,js}',
   ],
   theme: {
     extend: {},
