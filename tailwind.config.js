@@ -6,7 +6,11 @@ module.exports = {
     './views/partials/*.{handlebars,html,js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        custom: '93%',
+      }
+    },
     colors: {
       darkblue: '#2F4056',
       teal: '#44848F',
@@ -24,4 +28,3 @@ module.exports = {
   },
   plugins: [require('daisyui')],
 };
-
