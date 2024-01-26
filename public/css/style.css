@@ -50,7 +50,7 @@ html {
     transform-style: preserve-3d;
     transition: all 1s linear;
     transform: rotateX(180deg);
-    transfor-origin: 0% 0%;
+    transform-origin: 0% 0%;
     -webkit-transform: rotateX(180deg);
     -webkit-transform-origin: 0% 0%;
     -moz-transform: rotateX(180deg);
