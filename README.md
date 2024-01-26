@@ -1,7 +1,7 @@
 <h1 align="center">
 <img
 		width="400"
-  height="150"
+    height="150"
 		alt="The Real Fake Store"
 		src="https://github.com/LexiKHecht/Fake-store/assets/145725343/23fd48b2-1827-4f86-b653-d410a8f5cfe8">
   
@@ -13,7 +13,7 @@
 </h1>
 
   ## 🏬Description
-The Real Fake Store is a mock-up eCommerce shop that features a not-so-diverse selection of clothes, accesories, and electronics. This minimalist, straightforward online store allows shoppers to create a secured account which then grants access to the displayed products and corrisponding information for each. The shopper can easily scroll through their option, scan over prices, view reviews, and read short descriptions on all items. If they see a product they like, a `Buy Now` button can be clicked which simulates the item being saved to their personal cart.
+The Real Fake Store is a mock-up eCommerce shop that features a not-so-diverse selection of clothes, accessories, and electronics. This minimalist, straightforward online store allows shoppers to create a secured account which then grants access to the displayed products and corresponding information for each. The shopper can easily scroll through their options, scan over prices, view reviews, and read short descriptions on all items. If they see a product they like, a `Buy Now` button can be clicked which simulates an order being processed.
     
   ## Table of Contents
   * [Installation](#installation)
@@ -38,13 +38,14 @@ The Real Fake Store is a mock-up eCommerce shop that features a not-so-diverse s
 - Login/Logout Components
 - Personal Profile
 - Dynamic Colour Themes (Dark or Light mode)
-- Savable Cart Attribute
 
 ### Functionality
-- The shopper can view a very limited selection of products upon opening the homepage. A photo gallery can be browsed through and catagory links as well as contact information can be found towards the bottom of the page.
-- Once logged in, the shopper is granted full access to the complete list of products. Product name, price, shop catagory, description, and rating are all viewable for each item.
-- While logged in, the shopper can locate their profile by clicking the no-user picture in the top right corner. Order history and settings will be accesable from here in the future. 
-- Items can be `purchased' by a simple button click found to the righ of each ware. The item will then be saved to a personal cart. 
+- The shopper can view a very limited selection of products upon opening the homepage. A photo gallery can be browsed through and category links as well as contact information can be found towards the bottom of the page.
+- If the user does not have an account, they will need to create an account to sign in and view products. 
+- Once the user creates a new account, they will be sent a thank you email.
+- Once logged in, the shopper is granted full access to the complete list of products. Product name, price, shop category, description, and rating are all viewable for each item.
+- While logged in, the shopper can locate their profile by clicking the no-user picture in the top right corner. Order history will be accesable from here in the future. 
+- Items can be `purchased' by a simple button click found to the right of each ware. 
 
 ## API Used
 
