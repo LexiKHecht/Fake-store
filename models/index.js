@@ -1,43 +1,31 @@
 // Import models
-const User = require('./User');
+const User = require('./User.js');
+const Order = require('./Order');
+const Order_item = require('./Order_item');
 const Product = require('./Product');
-const Cart = require('./Cart');
-const Category = require('./Category');
 
-
-// Table Relationships
-
-// Cart belongs to User
-Cart.belongsTo(User, {
-    foreignKey: 'user_id',
-});
-// User has one Cart
-User.hasOne(Cart, {
-    foreignKey: 'user_id',
+User.hasOne(Order, {
+  foreignKey: 'order_id',
 });
 
-// Product belongs to Cart
-Product.belongsTo(Cart, {
-    foreignKey: 'cart_id',
-});
-// Cart has many Products
-Cart.hasMany(Product, {
-    foreignKey: 'cart_id',
+Order.belongsTo(User, {
+  foreignKey: 'order_id',
 });
 
-// Product belongs to Category
-Product.belongsTo(Category, {
-    foreignKey: 'category_id',
-});
-// Category has many Product
-Category.hasMany(Product, {
-    foreignKey: 'category_id',
+Order.hasMany(Order_item, {
+  foreignKey: 'order_item_id',
 });
 
+Order_item.belongsTo(Order, {
+  foreignKey: 'order_item_id',
+});
 
-module.exports = {
-    User,
-    Product,
-    Cart,
-    Category,
-};
+Product.belongsTo(Order_item, {
+  foreignKey: 'product_id',
+});
+
+Order_item.hasOne(Product, {
+  foreignKey: 'product_id',
+});
+
+module.exports = { User, Order, Order_item, Product };
