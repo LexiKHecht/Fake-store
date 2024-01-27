@@ -11,6 +11,10 @@ Product.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    product_price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,18 +23,14 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    stock: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 10,
-      validate: {
-        isNumeric: true,
-      },
+    product_img: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    order_item_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'order_item',
+        model: 'user',
         key: 'id',
       },
     },
