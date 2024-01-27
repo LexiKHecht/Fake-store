@@ -1,35 +1,22 @@
 const router = require('express').Router();
-const { Product } = require('../../models');
+const apiUrl = process.env.API_URL || 'https://fakestoreapi.com/products';
+const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
-    const dbProductData = await Product.findAll({
-      include: [{ model: Category }],
+    fetch(apiUrl).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          const singleProduct = data.find((item) => item.id == req.params.id);
+          res.render('product', {
+            isSingleProduct: true,
+            singleProduct,
+          });
+        });
+      } else {
+        res.status(404).json({ message: 'Product not found!' });
+      }
     });
-    const products = dbProductData.map((product) =>
-      product.get({ plain: true })
-    );
-
-    res.render('products', {
-      products,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
-});
-
-router.get('/:id', async (req, res) => {
-  try {
-    const dbProductData = await Product.findByPk(req.params.id, {
-      include: [{ model: Category }],
-    });
-    if (!dbProductData) {
-      res.status(404).json({ message: 'Product not found!' });
-      return;
-    }
-    const product = dbProductData.get({ plain: true });
-    res.render('product', { product });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);

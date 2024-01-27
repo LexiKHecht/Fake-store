@@ -40,19 +40,26 @@
             <i class='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400 dark:text-ghostWhite'></i>
            account holder
           </div>
+          {{#if user.products}}
           <details class='collapse collapse-arrow bg-palegreen dark:bg-slateGray'>
             <summary class='collapse-title text-l text-left font-medium mb-0 dark:bg-slateGray dark:text-ghostWhite'>Order History </summary>
+
+        {{#each user.products as |orderedProduct|}}
+
             <div class='collapse-content'>
-              <p class="dark:text-ghostWhite">content</p>
+              <p class="dark:text-ghostWhite">{{orderedProduct.product_name}}</p>
             </div>
+
+        {{/each}}
           </details>
+
+          {{/if}}
           <details class='collapse collapse-arrow bg-palegreen dark:bg-slateGray flex flex-row flex-nowrap'>
             <summary class='collapse-title text-l text-left font-medium m-0 dark:text-ghostWhite'>Settings </summary>
             <div class='collapse-content'>
               <p class="dark:text-ghostWhite">content</p>
             </div>
           </details>
-
         </div>
         <div class='mt-10 py-10 border-t-2 border-lightpink text-center'>
           <div class='flex flex-wrap justify-center'>

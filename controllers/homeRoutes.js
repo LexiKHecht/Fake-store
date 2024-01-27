@@ -1,24 +1,28 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Product } = require('../models');
 const withAuth = require('../utils/auth');
 const apiUrl = process.env.API_URL || 'https://fakestoreapi.com/products';
 
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
+      include: [
+        {
+          model: Product,
+          attributes: ['product_name'],
+        },
+      ],
     });
-    const user = userData.get({
-      plain: true,
-    });
+
+    const user = userData.get({ plain: true });
     console.log(user);
 
     res.render('profile', {
-      user: user,
-      name: 'help me',
+      user,
       logged_in: true,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -67,27 +71,6 @@ router.get('/signup', (req, res) => {
     res.render('signup');
   } catch (err) {
     res.status(500).json(err);
-  }
-});
-
-router.get('/product/:id', async (req, res) => {
-  try {
-    fetch(apiUrl).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (data) {
-          const singleProduct = data.find((item) => item.id == req.params.id);
-          console.log(singleProduct);
-          res.render('product', {
-            singleProduct,
-          });
-        });
-      } else {
-        res.status(404).json({ message: 'Product not found!' });
-      }
-    });
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
   }
 });
 

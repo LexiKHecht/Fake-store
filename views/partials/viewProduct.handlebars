@@ -2,6 +2,8 @@
   <div class='flex flex-row justify-evenly'>
     <div class='w-full px-6 md:border-r'>
       <div class='my-6'>
+
+        <a href='/api/buy/{{id}}'>Buy Now</a>
         <div
           class='mb-5 h-custom overflow-hidden rounded-mdn flex flex-wrap content-between'
         >
@@ -19,13 +21,9 @@
               ${{price}}
             </span>
 
-            <h3>
-              <a
-                href='/api/product/{{id}}'
-                class='block mb-2 text-xl font-semibold text-dark dark:text-white hover:text-primary sm:text-2xl md:text-lg 2xl:text-2xl'
-              >
+            <h3 class='block mb-2 text-xl font-semibold text-dark dark:text-white hover:text-primary sm:text-2xl md:text-lg 2xl:text-2xl'>
+
                 {{title}}
-              </a>
             </h3>
             {{> ratingSystem}}
           </div>
