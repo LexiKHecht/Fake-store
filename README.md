@@ -47,6 +47,9 @@ The Real Fake Store is a mock-up eCommerce shop that features a not-so-diverse s
 - While logged in, the shopper can locate their profile by clicking the no-user picture in the top right corner. Order history will be accesable from here in the future. 
 - Items can be `purchased' by a simple button click found to the right of each ware. 
 
+
+
+
 ## API Used
 
 - [FakeStoreAPI](https://fakestoreapi.com/) A free to use REST API created by Keikaavousi
