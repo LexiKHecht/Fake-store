@@ -7,7 +7,8 @@
     <form class='form new-user-form'>
       <h1 class='text-2xl font-bold dark:text-ghostWhite'>Sign up for an account</h1>
       <div>
-        <span class='text-gray-600 text-sm dark:text-ghostWhite'>Already have an account?</span>
+        <span class='text-gray-600 text-sm dark:text-ghostWhite'>Already have an
+          account?</span>
         <button
           id='login-route'
           class='text-gray-700 text-sm font-semibold text-info'
@@ -41,6 +42,14 @@
           placeholder='Your email address'
         />
       </div>
+
+      <div id='invalid-password' class='hidden'>
+        <p>
+          Your email or password are invalid. Please provide a valid email and
+          password(8 characters)...
+        </p>
+      </div>
+
       <div class='mb-6 mt-6'>
         <label
           class='block dark:text-ghostWhite text-sm font-semibold mb-2'
@@ -59,6 +68,7 @@
         <button
           class='w-full bg-teal border-teal shadow-lg text-sm py-2 px-4 font-semibold hover:scale-105 rounded-full dark:text-ghostWhite dark:bg-lightpink focus:outline-none focus:shadow-outline h-10'
           type='submit'
+          id='signup-button'
         >
           Sign up
         </button>
@@ -78,3 +88,7 @@
   </div>
 </div>
 <script src='./js/signUp.js'></script>
+{{! <script src='https://smtpjs.com/v3/smtp.js'>
+</script> }}
+<script src='./js/config.js'></script>
+<script src='./js/email.js'></script>
