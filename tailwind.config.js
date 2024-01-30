@@ -3,13 +3,14 @@ module.exports = {
   content: [
     './views/layouts/*.{handlebars,html,js}',
     './views/*.{handlebars,html,js}',
+    './utils/*.{handlebars,html,js}',
     './views/partials/*.{handlebars,html,js}',
   ],
   theme: {
     extend: {
       height: {
         custom: '93%',
-      }
+      },
     },
     colors: {
       darkblue: '#2F4056',

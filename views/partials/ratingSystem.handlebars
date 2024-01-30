@@ -2,8 +2,10 @@
 {{! rating system  }}
 <p class='flex items-center text-base text-body-color dark:text-dark-6'>
     <div class="rating gap-1">
-      {{{ get_stars rating.rate }}} {{rating.rate}} 
+      <tr></tr>
+        {{{ get_stars rating.rate }}} {{rating.rate}} 
       {{!-- <br> out of {{rating.count}} reviews --}}
+      </tr>
     </div>
 </p>
 {{! end of rating }}
