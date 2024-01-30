@@ -17,6 +17,17 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       const json = await response.json();
       console.log(json);
+
+      //  send an email using some email sending service or library.
+      // The exact implementation of the Email.send() function is not provided in the code snippet,
+      //  but it seems to handle the sending of emails.
+
+      /* SecureToken: This appears to be an authentication token required by the email sending service/library.
+        To: The email address of the user who signed up.
+        From: The sender's email address.
+        Subject: The subject of the email.
+        Body: The body content of the email, which includes HTML formatting.
+        */
       try {
         const message = await Email.send({
           SecureToken: json.smtpjs_secure_token,
@@ -61,7 +72,8 @@ const signupFormHandler = async (event) => {
     }
   }
 };
-
+// This function is executed when the button whose id is login-route is pressed
+// Routes the user back to the login page
 const loginRouteHandler = async (event) => {
   event.preventDefault();
   const response = await fetch('/login', {
@@ -71,26 +83,23 @@ const loginRouteHandler = async (event) => {
   if (response.ok) {
     document.location.replace('/login');
   } else {
-    alert(response.statusText);
+    console.log(response.statusText);
   }
 };
 
+// This is event is executed when the password input is invalid
+// Makes a div, that is hidden by the class "hidden", visible by .classList.remove('hidden');
+// Uses a timer to determine for how long the div should be visible for
 const invalidPassword = () => {
   var quickTimerCtr = 20;
   hiddenElement = document.querySelector('#invalid-password');
   const quickTimer = setInterval(function () {
     quickTimerCtr--;
-
-    // if quickTimerCtr is greater than 0 then show result
     hiddenElement.classList.remove('hidden');
-    console.log('quickTimerCtr:' + quickTimerCtr);
-    //  if quickTimer is less than or equal to 0 then hide the result
     if (quickTimerCtr <= 0) {
-      // Clears interval
       hiddenElement.classList.add('hidden');
       clearInterval(quickTimer);
     }
-    // set in Nanoseconds
   }, 100);
 };
 
