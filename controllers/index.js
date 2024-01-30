@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
+// It imports two routes: apiRoutes and homeRoutes using require('./api') and require('./homeRoutes')
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
-const storeRoutes = require('./storeRoutes');
 
+// The router mounts homeRoutes and apiRoutes
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
-router.use('/store', storeRoutes);
 
 module.exports = router;

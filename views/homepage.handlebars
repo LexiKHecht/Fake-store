@@ -216,6 +216,8 @@
 {{log products}}
 
 <div class="grid grid-cols-4 gap-4">
+  {{!-- Iterates over an array of products, and for each product, it renders a partial template named product.
+   The product partial template is expected to receive data  --}}
   {{#each products as |product|}}
 
   {{> product}}
